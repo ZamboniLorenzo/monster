@@ -5,7 +5,6 @@ public class Monster {
     private String name;
     private Integer hp;
     private Integer dmg;
-    private Double atkSpdRto; //Attack Speed Ratio
 
     public Monster(String name, Integer hp, Integer dmg, Double atkSpdRto) {
         this.name = name;
