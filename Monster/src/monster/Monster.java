@@ -5,14 +5,20 @@ public class Monster {
     private String name;
     private Integer hp;
     private Integer dmg;
+    private String enemyName;
+    private Integer enemyHP;
+    private Integer enemyDMG;
 
-    public Monster(String name, Integer hp, Integer dmg, Double atkSpdRto) {
+    public Monster(String name, Integer hp, Integer dmg, String enemyName, Integer enemyHP, Integer enemyDMG) {
         this.name = name;
         this.hp = hp;
         this.dmg = dmg;
+        this.enemyName = enemyName;
+        this.enemyHP = enemyHP;
+        this.enemyDMG = enemyDMG;
     }
 
-    public void damageDealt(Integer enemyHP) {
+    public void damageDealt() {
         if (enemyHP > dmg) {
             enemyHP = -dmg;
         } else {
@@ -21,7 +27,7 @@ public class Monster {
         }
     }
 
-    public void damageReceveid(Integer enemyDMG) {
+    public void damageReceveid() {
         if (hp > enemyDMG) {
             hp = -enemyDMG;
         } else {
@@ -31,7 +37,7 @@ public class Monster {
 
     }
 
-    public String endOfDuel(char wol) {
+    private String endOfDuel(char wol) {
         String result = "";
         switch (wol) {
             case 'w':
@@ -43,4 +49,13 @@ public class Monster {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s = "Game statistics \n" + name + " has " + hp + "HP" + "\n" + enemyName + " has " + enemyHP + "HP";
+        return s;
+    }
+    
+    
 }
