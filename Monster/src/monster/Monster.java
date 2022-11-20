@@ -16,6 +16,7 @@ public class Monster {
         if (enemyHP > dmg) {
             enemyHP = -dmg;
         } else {
+            enemyHP = 0;
             endOfDuel('w');
         }
     }
@@ -24,6 +25,7 @@ public class Monster {
         if (hp > enemyDMG) {
             hp = -enemyDMG;
         } else {
+            hp = 0;
             endOfDuel('l');
         }
 
@@ -37,6 +39,7 @@ public class Monster {
                 break;
             case 'l':
                 result = "End of duel, you lost!";
+                break;
         }
         return result;
     }
