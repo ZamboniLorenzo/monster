@@ -18,35 +18,41 @@ public class Monster {
         this.enemyDMG = enemyDMG;
     }
 
-    public void damageDealt() {
-        if (enemyHP > dmg) {
-            enemyHP = -dmg;
+    public void damageDealt() throws Exception {
+        if (enemyHP != 0) {
+            if (enemyHP > dmg) {
+                this.enemyHP -= dmg;
+            } else {
+                this.enemyHP = 0;
+                endOfDuel(true);
+            }
         } else {
-            enemyHP = 0;
-            endOfDuel('w');
+            throw new Exception("Duel alread ended");
         }
     }
 
-    public void damageReceveid() {
-        if (hp > enemyDMG) {
-            hp = -enemyDMG;
+    public void damageReceveid() throws Exception{
+        if (hp != 0) {
+            if (hp > enemyDMG) {
+                this.hp -= enemyDMG;
+            } else {
+                this.hp = 0;
+                endOfDuel(false);
+            }
         } else {
-            hp = 0;
-            endOfDuel('l');
+            throw new Exception("Duel alread ended");
         }
 
     }
 
-    private String endOfDuel(char wol) {
+    public String endOfDuel(Boolean wol) {
         String result = "";
-        switch (wol) {
-            case 'w':
-                result = "Congratulations, you won!";
-                break;
-            case 'l':
-                result = "End of duel, you lost!";
-                break;
+        if (wol) {
+            result = "Congratulations, you won!";
+        } else {
+            result = "End of duel, you lost!";
         }
+        System.out.println(result);
         return result;
     }
 
@@ -56,6 +62,5 @@ public class Monster {
         s = "Game statistics \n" + name + " has " + hp + "HP" + "\n" + enemyName + " has " + enemyHP + "HP";
         return s;
     }
-    
-    
+
 }
